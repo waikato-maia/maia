@@ -1,3 +1,4 @@
 # IntelliJ configuration
+.gradle/
 .idea/
-maia.iml
+build/

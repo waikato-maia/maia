@@ -1,0 +1,43 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.5.21'
+}
+
+group 'maia'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://simulation.tudelft.nl/maven"
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation "org.jetbrains.kotlin:kotlin-reflect"
+    implementation "nz.ac.waikato.cms.moa:moa:2021.07.0"
+    implementation "maia:maia-arff"
+    implementation "maia:maia-configure"
+    implementation "maia:maia-dataset"
+    implementation "maia:maia-json-configuration"
+    implementation "maia:maia-learner"
+    implementation "maia:maia-learner-factory"
+    implementation "maia:maia-moa-appletree"
+    implementation "maia:maia-moa-dataset-nodes"
+    implementation "maia:maia-moa-datasets"
+    implementation "maia:maia-moa-learners"
+    implementation "maia:maia-primitive"
+    implementation "maia:maia-standard-dataset-nodes"
+    implementation "maia:maia-standard-datasets"
+    implementation "maia:maia-standard-learner-nodes"
+    implementation "maia:maia-standard-learners"
+    implementation "maia:maia-standard-nodes"
+    implementation "maia:maia-standard-types"
+    implementation "maia:maia-topology"
+    implementation "maia:maia-topology-json"
+    implementation "maia:maia-util"
+}
+
+sourceSets {
+    main.kotlin.srcDirs += 'src'
+}
