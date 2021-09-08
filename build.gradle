@@ -22,7 +22,6 @@ dependencies {
     implementation "maia:maia-json-configuration"
     implementation "maia:maia-learner"
     implementation "maia:maia-learner-factory"
-    implementation "maia:maia-moa-appletree"
     implementation "maia:maia-moa-dataset-nodes"
     implementation "maia:maia-moa-datasets"
     implementation "maia:maia-moa-learners"
