@@ -1,4 +1,6 @@
 rootProject.name = 'maia'
+includeBuild "../maia-build"
+includeBuild "../maia-build-moa"
 includeBuild "../maia-arff"
 includeBuild "../maia-configure"
 includeBuild "../maia-dataset"

@@ -22,7 +22,7 @@ package māia.main
 import māia.configure.initialise
 import māia.ml.dataset.DataBatch
 import māia.ml.dataset.DataRow
-import māia.ml.dataset.arff.ARFFLoaderConfiguration
+import māia.ml.dataset.DataStream
 import māia.ml.learner.standard.ConfigurableZeroRLearnerFactory
 import māia.ml.learner.standard.ZeroRConfiguration
 import māia.topology.buildTopology
@@ -48,13 +48,9 @@ fun main() {
          * filter out the first 75 rows
          */
 
-        val arffLoaderConfig = initialise<ARFFLoaderConfiguration> {
-            filename = "/home/csterlin/Downloads/weka-3-9-4-azul-zulu-linux/weka-3-9-4/data/iris.arff"
-        }
-
         val source = ARFFSource {
             name = "source"
-            arffLoaderConfiguration = arffLoaderConfig
+            filename = "/home/csterlin/Downloads/weka-3-9-4-azul-zulu-linux/weka-3-9-4/data/iris.arff"
         }
 
         val toRows = IterateRows {
@@ -97,11 +93,11 @@ fun main() {
             name = "bvr"
         }
 
-        val init = InitialiseOnFirst<DataBatch<*, *>> {
+        val init = InitialiseOnFirst<DataStream<*>> {
             name = "init"
         }
 
-        val seq = Sequential<DataBatch<*, *>> {
+        val seq = Sequential<DataStream<*>> {
             name = "seq"
         }
 

@@ -1,21 +1,11 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.5.21'
+    id 'maia.build.moa'
 }
 
 group 'maia'
 version '1.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-    maven {
-        url "https://simulation.tudelft.nl/maven"
-    }
-}
-
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib"
-    implementation "org.jetbrains.kotlin:kotlin-reflect"
-    implementation "nz.ac.waikato.cms.moa:moa:2021.07.0"
     implementation "maia:maia-arff"
     implementation "maia:maia-configure"
     implementation "maia:maia-dataset"
@@ -38,5 +28,5 @@ dependencies {
 }
 
 sourceSets {
-    main.kotlin.srcDirs += 'src'
+    test.java.srcDirs = ['test']
 }

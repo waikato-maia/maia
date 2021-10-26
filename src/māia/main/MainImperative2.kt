@@ -22,8 +22,8 @@ package māia.main
 import māia.configure.initialise
 import māia.ml.dataset.DataBatch
 import māia.ml.dataset.DataRow
-import māia.ml.dataset.arff.ARFFLoader
-import māia.ml.dataset.arff.ARFFLoaderConfiguration
+import māia.ml.dataset.DataStream
+import māia.ml.dataset.arff.load
 import māia.ml.dataset.util.formatString
 import māia.ml.dataset.view.readOnlyViewRows
 import māia.ml.dataset.view.viewAsDataBatch
@@ -41,17 +41,12 @@ import māia.topology.node.standard.ml.learner.LearnerNode
 import māia.topology.node.standard.ml.learner.NewLearner
 import māia.topology.node.standard.routing.LetPassForRange
 import māia.topology.node.standard.routing.Split
+import māia.util.assertType
 
 
 fun main() {
 
-    val loaderConfig = initialise<ARFFLoaderConfiguration> {
-        filename = "/home/csterlin/Downloads/weka-3-9-4-azul-zulu-linux/weka-3-9-4/data/iris.arff"
-    }
-
-    val loader = ARFFLoader(loaderConfig)
-
-    val irisDataset = loader.load()
+    val irisDataset = assertType<DataBatch<*>>(load("/home/csterlin/Downloads/weka-3-9-4-azul-zulu-linux/weka-3-9-4/data/iris.arff", true))
 
     val learnerConfig = initialise<DummyIncrementalLearnerConfiguration> {
         target = 4
@@ -75,14 +70,15 @@ fun main() {
 
         val source = ARFFSource {
             name = "source"
-            arffLoaderConfiguration = loaderConfig
+            filename = "/home/csterlin/Downloads/weka-3-9-4-azul-zulu-linux/weka-3-9-4/data/iris.arff"
+            batch = true
         }
 
         val toRows = IterateRows {
             name = "rows"
         }
 
-        val pass = LetPassForRange<DataBatch<*, *>> {
+        val pass = LetPassForRange<DataBatch<*>> {
             name = "pass"
             start = 0
             endInclusive = 111111
@@ -93,11 +89,11 @@ fun main() {
             name = "bvr"
         }
 
-        val init = InitialiseOnFirst<DataBatch<*, *>> {
+        val init = InitialiseOnFirst<DataStream<*>> {
             name = "init"
         }
 
-        val seq = Sequential<DataBatch<*, *>> {
+        val seq = Sequential<DataBatch<*>> {
             name = "seq"
         }
 

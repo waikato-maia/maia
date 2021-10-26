@@ -19,22 +19,19 @@
  */
 package māia.main
 
-import māia.ml.dataset.arff.ARFFLoader
+import māia.ml.dataset.DataBatch
+import māia.ml.dataset.arff.load
 import māia.ml.dataset.util.formatString
 import māia.ml.dataset.view.readOnlyViewRows
 import māia.ml.dataset.view.viewAsDataBatch
 import māia.ml.learner.standard.ZeroRLearner
+import māia.util.assertType
 
 
 fun main() {
 
-    // Create a loader for the Iris dataset
-    val loader = ARFFLoader {
-        filename = "/home/csterlin/Downloads/weka-3-9-4-azul-zulu-linux/weka-3-9-4/data/iris.arff"
-    }
-
     // Load the dataset
-    val irisDataset = loader.load()
+    val irisDataset = assertType<DataBatch<*>>(load("/home/csterlin/Downloads/weka-3-9-4-azul-zulu-linux/weka-3-9-4/data/iris.arff", true))
 
     // Create a read-only view of the data-set
     val irisView = irisDataset.readOnlyViewRows((75 until irisDataset.numRows).toList())
