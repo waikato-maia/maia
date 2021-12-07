@@ -42,11 +42,14 @@ import māia.topology.node.standard.ml.learner.NewLearner
 import māia.topology.node.standard.routing.LetPassForRange
 import māia.topology.node.standard.routing.Split
 import māia.util.assertType
+import māia.util.getResourceStatic
 
 
 fun main() {
 
-    val irisDataset = assertType<DataBatch<*>>(load("/home/csterlin/Downloads/weka-3-9-4-azul-zulu-linux/weka-3-9-4/data/iris.arff", true))
+    val irisURL = getResourceStatic("/iris.arff")
+        ?: throw Exception("Could not find resource '/iris.arff'")
+    val irisDataset = assertType<DataBatch<*>>(load(irisURL.file, true))
 
     val learnerConfig = initialise<DummyIncrementalLearnerConfiguration> {
         target = 4

@@ -26,12 +26,15 @@ import māia.ml.dataset.view.readOnlyViewRows
 import māia.ml.dataset.view.viewAsDataBatch
 import māia.ml.learner.standard.ZeroRLearner
 import māia.util.assertType
+import māia.util.getResourceStatic
 
 
 fun main() {
 
     // Load the dataset
-    val irisDataset = assertType<DataBatch<*>>(load("/home/csterlin/Downloads/weka-3-9-4-azul-zulu-linux/weka-3-9-4/data/iris.arff", true))
+    val irisURL = getResourceStatic("/iris.arff")
+        ?: throw Exception("Could not find resource '/iris.arff'")
+    val irisDataset = assertType<DataBatch<*>>(load(irisURL.file, true))
 
     // Create a read-only view of the data-set
     val irisView = irisDataset.readOnlyViewRows((75 until irisDataset.numRows).toList())

@@ -37,6 +37,7 @@ import māia.topology.node.standard.ml.learner.LearnerNode
 import māia.topology.node.standard.ml.learner.NewLearner
 import māia.topology.node.standard.routing.LetPassForRange
 import māia.topology.node.standard.routing.Split
+import māia.util.getResourceStatic
 
 
 fun main() {
@@ -48,9 +49,11 @@ fun main() {
          * filter out the first 75 rows
          */
 
+        val irisURL = getResourceStatic("/iris.arff")
+            ?: throw Exception("Could not find resource '/iris.arff'")
         val source = ARFFSource {
             name = "source"
-            filename = "/home/csterlin/Downloads/weka-3-9-4-azul-zulu-linux/weka-3-9-4/data/iris.arff"
+            filename = irisURL.file
         }
 
         val toRows = IterateRows {
