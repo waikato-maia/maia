@@ -17,18 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with MĀIA.  If not, see <https://www.gnu.org/licenses/>.
  */
-package māia.main
+package maia.main
 
-import māia.topology.buildTopology
-import māia.topology.node.standard.Delay
-import māia.topology.node.standard.Printer
-import māia.topology.node.standard.routing.Alternate
-import māia.topology.node.standard.routing.Buffer
-import māia.topology.node.standard.routing.LetPassForRange
-import māia.topology.node.standard.routing.Zip
-import māia.topology.node.standard.test.DummyHotSource
-import māia.topology.node.standard.test.InstantCloseSink
-import māia.topology.node.standard.test.InstantCloseSource
+import maia.topology.buildTopology
+import maia.topology.node.standard.Delay
+import maia.topology.node.standard.Printer
+import maia.topology.node.standard.routing.Alternate
+import maia.topology.node.standard.routing.Buffer
+import maia.topology.node.standard.routing.LetPassForRange
+import maia.topology.node.standard.routing.Zip
+import maia.topology.node.standard.test.DummyHotSource
+import maia.topology.node.standard.test.InstantCloseSink
+import maia.topology.node.standard.test.InstantCloseSource
 
 
 /**

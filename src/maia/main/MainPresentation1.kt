@@ -17,15 +17,15 @@
  * You should have received a copy of the GNU General Public License
  * along with MĀIA.  If not, see <https://www.gnu.org/licenses/>.
  */
-package māia.main
+package maia.main
 
-import māia.configure.json.JSONConfigurationWriter
-import māia.configure.Configuration
-import māia.configure.ConfigurationElement
-import māia.configure.ConfigurationItem
-import māia.configure.initialise
-import māia.configure.subconfiguration
-import māia.configure.visitation.visit
+import maia.configure.json.JSONConfigurationWriter
+import maia.configure.Configuration
+import maia.configure.ConfigurationElement
+import maia.configure.ConfigurationItem
+import maia.configure.initialise
+import maia.configure.subconfiguration
+import maia.configure.visitation.visit
 
 
 class PointConfiguration : Configuration() {

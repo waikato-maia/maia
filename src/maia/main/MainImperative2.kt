@@ -17,32 +17,32 @@
  * You should have received a copy of the GNU General Public License
  * along with MĀIA.  If not, see <https://www.gnu.org/licenses/>.
  */
-package māia.main
+package maia.main
 
-import māia.configure.initialise
-import māia.ml.dataset.DataBatch
-import māia.ml.dataset.DataRow
-import māia.ml.dataset.DataStream
-import māia.ml.dataset.arff.load
-import māia.ml.dataset.util.formatString
-import māia.ml.dataset.view.readOnlyViewRows
-import māia.ml.dataset.view.viewAsDataBatch
-import māia.ml.learner.standard.ConfigurableDummyIncrementalLearnerFactory
-import māia.ml.learner.standard.DummyIncrementalLearnerConfiguration
-import māia.topology.buildTopology
-import māia.topology.node.standard.Printer
-import māia.topology.node.standard.Sequential
-import māia.topology.node.standard.ml.dataset.ARFFSource
-import māia.topology.node.standard.ml.dataset.BatchViewRows
-import māia.topology.node.standard.ml.dataset.FormatDataRow
-import māia.topology.node.standard.ml.dataset.InitialiseOnFirst
-import māia.topology.node.standard.ml.dataset.IterateRows
-import māia.topology.node.standard.ml.learner.LearnerNode
-import māia.topology.node.standard.ml.learner.NewLearner
-import māia.topology.node.standard.routing.LetPassForRange
-import māia.topology.node.standard.routing.Split
-import māia.util.assertType
-import māia.util.getResourceStatic
+import maia.configure.initialise
+import maia.ml.dataset.DataBatch
+import maia.ml.dataset.DataRow
+import maia.ml.dataset.DataStream
+import maia.ml.dataset.arff.load
+import maia.ml.dataset.util.formatString
+import maia.ml.dataset.view.readOnlyViewRows
+import maia.ml.dataset.view.viewAsDataBatch
+import maia.ml.learner.standard.ConfigurableDummyIncrementalLearnerFactory
+import maia.ml.learner.standard.DummyIncrementalLearnerConfiguration
+import maia.topology.buildTopology
+import maia.topology.node.standard.Printer
+import maia.topology.node.standard.Sequential
+import maia.topology.node.standard.ml.dataset.ARFFSource
+import maia.topology.node.standard.ml.dataset.BatchViewRows
+import maia.topology.node.standard.ml.dataset.FormatDataRow
+import maia.topology.node.standard.ml.dataset.InitialiseOnFirst
+import maia.topology.node.standard.ml.dataset.IterateRows
+import maia.topology.node.standard.ml.learner.LearnerNode
+import maia.topology.node.standard.ml.learner.NewLearner
+import maia.topology.node.standard.routing.LetPassForRange
+import maia.topology.node.standard.routing.Split
+import maia.util.assertType
+import maia.util.getResourceStatic
 
 
 fun main() {
@@ -73,7 +73,7 @@ fun main() {
 
         val source = ARFFSource {
             name = "source"
-            filename = "/home/csterlin/Downloads/weka-3-9-4-azul-zulu-linux/weka-3-9-4/data/iris.arff"
+            filename = irisURL.file
             batch = true
         }
 

@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with MĀIA.  If not, see <https://www.gnu.org/licenses/>.
  */
-package māia.main
+package maia.main
 
 import kotlinx.benchmark.Blackhole
 import kotlinx.benchmark.Mode
@@ -27,14 +27,14 @@ import moa.classifiers.trees.HoeffdingTree
 import moa.core.Utils
 import moa.streams.InstanceStream
 import moa.streams.generators.RandomRBFGenerator
-import māia.ml.dataset.DataStream
-import māia.ml.dataset.moa.MOADataStream
-import māia.ml.dataset.moa.dataStreamToInstanceStream
-import māia.ml.dataset.moa.materalizeMOAClass
-import māia.ml.dataset.view.viewAsDataBatch
-import māia.ml.learner.Learner
-import māia.ml.learner.LearnerHarness
-import māia.ml.learner.moa.MOALearner
+import maia.ml.dataset.DataStream
+import maia.ml.dataset.moa.MOADataStream
+import maia.ml.dataset.moa.dataStreamToInstanceStream
+import maia.ml.dataset.moa.materalizeMOAClass
+import maia.ml.dataset.view.viewAsDataBatch
+import maia.ml.learner.Learner
+import maia.ml.learner.LearnerHarness
+import maia.ml.learner.moa.MOALearner
 import org.openjdk.jmh.annotations.Benchmark
 import org.openjdk.jmh.annotations.BenchmarkMode
 import org.openjdk.jmh.annotations.Measurement
@@ -140,7 +140,7 @@ open class EvalPreqBenchmark {
     }
 
     fun maiaLearner(params: Params): Learner<DataStream<*>> {
-        val learner = māia.ml.learner.standard.hoeffdingtree.HoeffdingTree()
+        val learner = maia.ml.learner.standard.hoeffdingtree.HoeffdingTree()
         return if (params.withHarness)
             LearnerHarness(learner, DataStream::class)
         else
@@ -148,7 +148,7 @@ open class EvalPreqBenchmark {
     }
 
     fun maiaSource(params: Params): DataStream<*> {
-        return māia.ml.dataset.standard.RandomRBFGenerator(
+        return maia.ml.dataset.standard.RandomRBFGenerator(
             1,
             1,
             params.numClasses,

@@ -17,16 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with MĀIA.  If not, see <https://www.gnu.org/licenses/>.
  */
-package māia.main
+package maia.main
 
-import māia.ml.dataset.DataBatch
-import māia.ml.dataset.arff.load
-import māia.ml.dataset.util.formatString
-import māia.ml.dataset.view.readOnlyViewRows
-import māia.ml.dataset.view.viewAsDataBatch
-import māia.ml.learner.standard.ZeroRLearner
-import māia.util.assertType
-import māia.util.getResourceStatic
+import maia.ml.dataset.DataBatch
+import maia.ml.dataset.arff.load
+import maia.ml.dataset.util.formatString
+import maia.ml.dataset.view.readOnlyViewRows
+import maia.ml.dataset.view.viewAsDataBatch
+import maia.ml.learner.standard.ZeroRLearner
+import maia.util.assertType
+import maia.util.getResourceStatic
 
 
 fun main() {

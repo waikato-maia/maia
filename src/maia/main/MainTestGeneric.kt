@@ -17,9 +17,9 @@
  * You should have received a copy of the GNU General Public License
  * along with MĀIA.  If not, see <https://www.gnu.org/licenses/>.
  */
-package māia.main
+package maia.main
 
-import māia.util.createType
+import maia.util.createType
 import kotlin.reflect.KTypeProjection
 import kotlin.reflect.full.createType
 

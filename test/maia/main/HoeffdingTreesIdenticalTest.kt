@@ -17,12 +17,12 @@
  * You should have received a copy of the GNU General Public License
  * along with MĀIA.  If not, see <https://www.gnu.org/licenses/>.
  */
-package māia.main
+package maia.main
 
 import moa.classifiers.AbstractClassifier
 import moa.classifiers.trees.HoeffdingTree
-import māia.ml.dataset.view.viewAsDataBatch
-import māia.ml.learner.moa.MOALearner
+import maia.ml.dataset.view.viewAsDataBatch
+import maia.ml.learner.moa.MOALearner
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -34,7 +34,7 @@ import kotlin.test.assertEquals
 class HoeffdingTreesIdenticalTest {
 
     inline fun assertStrings(
-        learner: māia.ml.learner.standard.hoeffdingtree.HoeffdingTree,
+        learner: maia.ml.learner.standard.hoeffdingtree.HoeffdingTree,
         learner2: MOALearner
     ) {
         val learner2String = buildString { (learner2.source as AbstractClassifier).getModelDescription(this, 2) }
@@ -47,9 +47,9 @@ class HoeffdingTreesIdenticalTest {
     fun testIdentical() {
         val maxInstances = 10_000_000
         val numAttr = 10
-        val learner = māia.ml.learner.standard.hoeffdingtree.HoeffdingTree()
+        val learner = maia.ml.learner.standard.hoeffdingtree.HoeffdingTree()
         val learner2 = MOALearner(HoeffdingTree().apply { prepareForUse() })
-        val stream = māia.ml.dataset.standard.RandomRBFGenerator(2, 3, 5, numAttr, 50)
+        val stream = maia.ml.dataset.standard.RandomRBFGenerator(2, 3, 5, numAttr, 50)
 
         learner.initialise(stream)
         learner2.initialise(stream)

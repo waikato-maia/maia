@@ -17,12 +17,12 @@
  * You should have received a copy of the GNU General Public License
  * along with MĀIA.  If not, see <https://www.gnu.org/licenses/>.
  */
-package māia.main
+package maia.main
 
-import māia.topology.buildTopology
-import māia.topology.node.standard.Printer
-import māia.topology.node.standard.test.DummyHotSource
-import māia.topology.node.standard.test.PassThrough
+import maia.topology.buildTopology
+import maia.topology.node.standard.Printer
+import maia.topology.node.standard.test.DummyHotSource
+import maia.topology.node.standard.test.PassThrough
 
 
 fun main() {
