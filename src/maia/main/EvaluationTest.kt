@@ -4,9 +4,11 @@ import maia.ml.dataset.DataBatch
 import maia.ml.dataset.arff.load
 import maia.ml.learner.standard.NaiveBayesLearner
 import maia.ml.learner.standard.ZeroRLearner
+import maia.ml.learner.standard.hoeffdingtree.AdaptiveRandomForest
 import maia.ml.learner.standard.hoeffdingtree.HoeffdingTree
 import maia.util.assertType
 import maia.util.getResourceStatic
+
 
 fun main() {
     //val filename = "/iris.arff"
@@ -21,9 +23,9 @@ fun main() {
 
     // Create a learner instance
     //val learner = ZeroRLearner(dataset.numColumns-1)
-    val learner = NaiveBayesLearner(dataset.numColumns-1, false, false)
+    //val learner = NaiveBayesLearner(dataset.numColumns-1, false, false)
     //val learner = HoeffdingTree(dataset.numColumns-1)
-    //val learner = AdaptiveRandomForest()
+    val learner = AdaptiveRandomForest(dataset.numColumns-1)
 
     //Create an evaluation instance
     //val evaluation = CrossValidation(dataset, learner, 10)

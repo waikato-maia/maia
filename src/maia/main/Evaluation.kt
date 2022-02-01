@@ -6,17 +6,17 @@ import maia.ml.learner.AbstractLearner
 import maia.util.assertType
 import kotlin.system.measureTimeMillis
 
-abstract class Evaluation(val dataset: DataBatch<*>, val learner: AbstractLearner<DataBatch<*>>){
+abstract class Evaluation(val data: DataBatch<*>, val learner: AbstractLearner<DataBatch<*>>){
 
     var classificationAccuracy = 0.0
 
     fun timeToBuild() {
         val timeInMillis = measureTimeMillis {
             // Initialise the learner on the dataset
-            learner.initialise(dataset)
+            learner.initialise(data)
 
             // Train on the dataset
-            learner.train(dataset)
+            learner.train(data)
         }
 
         //Print the time taken to build the model

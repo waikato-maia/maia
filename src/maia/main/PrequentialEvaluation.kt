@@ -6,19 +6,19 @@ import maia.ml.dataset.view.viewAsDataBatch
 import maia.ml.learner.AbstractLearner
 import maia.util.assertType
 
-class PrequentialEvaluation(val dataset1: DataBatch<*>, val learner1: AbstractLearner<DataBatch<*>>) : Evaluation(dataset1, learner1) {
+class PrequentialEvaluation(val dataset: DataBatch<*>, val learnerType: AbstractLearner<DataBatch<*>>) : Evaluation(dataset, learnerType) {
     override fun classificationAccuracy() {
-        learner.initialise(dataset)
+        learner.initialise(data)
 
         // Get the desired representations of the actual and predicted classes
-        val actualClassRepr = assertType<Nominal<*, *, *, *>>(dataset.headers[dataset.numColumns-1].type).canonicalRepresentation
+        val actualClassRepr = assertType<Nominal<*, *, *, *>>(data.headers[data.numColumns-1].type).canonicalRepresentation
         val predictedClassRepr = assertType<Nominal<*, *, *, *>>(learner.predictOutputHeaders[0].type).canonicalRepresentation
 
         //Initialise variables
         var instancesCorrect = 0
         var totalInstances = 0
 
-        for (row in dataset.rowIterator()) {
+        for (row in data.rowIterator()) {
             totalInstances ++
 
             //Get the actual class for the row
