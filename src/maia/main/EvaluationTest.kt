@@ -24,16 +24,21 @@ fun main() {
     // Create a learner instance
     //val learner = ZeroRLearner(dataset.numColumns-1)
     //val learner = NaiveBayesLearner(dataset.numColumns-1, false, false)
-    //val learner = HoeffdingTree(dataset.numColumns-1)
-    val learner = AdaptiveRandomForest(dataset.numColumns-1)
+    val learner = HoeffdingTree(dataset.numColumns-1)
+    //val learner = AdaptiveRandomForest(dataset.numColumns-1)
 
     //Create an evaluation instance
-    //val evaluation = CrossValidation(dataset, learner, 10)
-    val evaluation = PrequentialEvaluation(dataset, learner)
+    //val evaluation = CrossValidation()
+    val evaluation = PrequentialEvaluation()
 
     //Get time taken to build the model
-    evaluation.timeToBuild()
+    //println("Time taken to build the model: " + evaluation.timeToBuild(dataset, learner) + " seconds")
 
     //Get the classification accuracy
-    evaluation.classificationAccuracy()
+    //println("Classification Accuracy with Cross Validation: " + evaluation.classificationAccuracy(dataset, learner, 10) + " %")
+
+    val classificationAccuracyList = evaluation.classificationAccuracy(dataset, learner, 100000)
+    for (i in classificationAccuracyList) {
+        println("Classification accuracy after processing " + i[0].toInt() + " instances: " + i[1] + " %")
+    }
 }
