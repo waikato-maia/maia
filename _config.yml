@@ -16,7 +16,7 @@
 title: MĀIA: Mobile Analytics using AI on Android
 description: Kotlin Machine Learning Software
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://waikato.github.io/maia/" # the base hostname & protocol for your site, e.g. http://example.com
 github_repo: jekyll # the GitHub repo name for your project
 github_username: jekyll
 
