@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-cd ../maia-build && ./gradlew clean build test
+cd maia-build && ./gradlew clean build test
 cd ../maia-build-moa && ./gradlew clean build test
 cd ../maia-arff && ./gradlew clean build test
 cd ../maia-configure && ./gradlew clean build test

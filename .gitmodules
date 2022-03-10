@@ -1,0 +1,63 @@
+[submodule "maia-arff"]
+	path = maia-arff
+	url = https://github.com/Waikato/maia-arff.git
+[submodule "maia-build"]
+	path = maia-build
+	url = https://github.com/Waikato/maia-build.git
+[submodule "maia-build-moa"]
+	path = maia-build-moa
+	url = https://github.com/Waikato/maia-build-moa.git
+[submodule "maia-configure"]
+	path = maia-configure
+	url = https://github.com/Waikato/maia-configure.git
+[submodule "maia-dataset"]
+	path = maia-dataset
+	url = https://github.com/Waikato/maia-dataset.git
+[submodule "maia-json-configuration"]
+	path = maia-json-configuration
+	url = https://github.com/Waikato/maia-json-configuration.git
+[submodule "maia-learner"]
+	path = maia-learner
+	url = https://github.com/Waikato/maia-learner.git
+[submodule "maia-learner-factory"]
+	path = maia-learner-factory
+	url = https://github.com/Waikato/maia-learner-factory.git
+[submodule "maia-moa-dataset-nodes"]
+	path = maia-moa-dataset-nodes
+	url = https://github.com/Waikato/maia-moa-dataset-nodes.git
+[submodule "maia-moa-datasets"]
+	path = maia-moa-datasets
+	url = https://github.com/Waikato/maia-moa-datasets.git
+[submodule "maia-moa-learners"]
+	path = maia-moa-learners
+	url = https://github.com/Waikato/maia-moa-learners.git
+[submodule "maia-primitive"]
+	path = maia-primitive
+	url = https://github.com/Waikato/maia-primitive.git
+[submodule "maia-standard-dataset-nodes"]
+	path = maia-standard-dataset-nodes
+	url = https://github.com/Waikato/maia-standard-dataset-nodes.git
+[submodule "maia-standard-datasets"]
+	path = maia-standard-datasets
+	url = https://github.com/Waikato/maia-standard-datasets.git
+[submodule "maia-standard-learner-nodes"]
+	path = maia-standard-learner-nodes
+	url = https://github.com/Waikato/maia-standard-learner-nodes.git
+[submodule "maia-standard-learners"]
+	path = maia-standard-learners
+	url = https://github.com/Waikato/maia-standard-learners.git
+[submodule "maia-standard-nodes"]
+	path = maia-standard-nodes
+	url = https://github.com/Waikato/maia-standard-nodes.git
+[submodule "maia-standard-types"]
+	path = maia-standard-types
+	url = https://github.com/Waikato/maia-standard-types.git
+[submodule "maia-topology"]
+	path = maia-topology
+	url = https://github.com/Waikato/maia-topology.git
+[submodule "maia-topology-json"]
+	path = maia-topology-json
+	url = https://github.com/Waikato/maia-topology-json.git
+[submodule "maia-util"]
+	path = maia-util
+	url = https://github.com/Waikato/maia-util.git

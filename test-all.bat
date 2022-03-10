@@ -33,12 +33,12 @@ goto :eof
 @rem cds into the argument repo and runs the tests
 :TestRepo
 echo Testing %~1...
-cd ../%~1
+cd %~1
 call ./gradlew.bat clean build test
 if %ERRORLEVEL% neq 0 (
     echo Error testing %~1
     @rem Exit using (goto) 2>nul trick as in https://stackoverflow.com/questions/3227796/exit-batch-script-from-inside-a-function
-    cd ../maia
+    cd ..
     (goto) 2>nul
     exit /B %ERRORLEVEL%
 )
