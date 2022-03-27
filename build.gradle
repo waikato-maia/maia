@@ -9,6 +9,7 @@ dependencies {
     implementation "maia:maia-arff"
     implementation "maia:maia-configure"
     implementation "maia:maia-dataset"
+    implementation "maia:maia-evaluations"
     implementation "maia:maia-json-configuration"
     implementation "maia:maia-learner"
     implementation "maia:maia-learner-factory"

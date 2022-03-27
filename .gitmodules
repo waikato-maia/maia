@@ -61,3 +61,6 @@
 [submodule "maia-util"]
 	path = maia-util
 	url = https://github.com/Waikato/maia-util.git
+[submodule "maia-evaluations"]
+	path = maia-evaluations
+	url = https://github.com/Waikato/maia-evaluations.git
