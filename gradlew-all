@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+echo "$1"
+
+function run_gradlew_in_dir() {
+    cd "$1"
+    ./gradlew "${@:2}"
+    cd ..
+}
+
+if [[ "$1" == "--skip-build" ]]; then
+  echo "Skipping build packages"
+  ARGS="${@:2}"
+else
+  echo "Including build packages"
+  ARGS="$@"
+  run_gradlew_in_dir maia-build "$ARGS"
+  run_gradlew_in_dir maia-build-moa "$ARGS"
+fi
+
+# Kotlin source
+run_gradlew_in_dir maia-arff "$ARGS"
+run_gradlew_in_dir maia-configure "$ARGS"
+run_gradlew_in_dir maia-dataset "$ARGS"
+run_gradlew_in_dir maia-json-configuration "$ARGS"
+run_gradlew_in_dir maia-learner "$ARGS"
+run_gradlew_in_dir maia-learner-factory "$ARGS"
+run_gradlew_in_dir maia-moa-dataset-nodes "$ARGS"
+run_gradlew_in_dir maia-moa-datasets "$ARGS"
+run_gradlew_in_dir maia-moa-learners "$ARGS"
+run_gradlew_in_dir maia-primitive "$ARGS"
+run_gradlew_in_dir maia-standard-dataset-nodes "$ARGS"
+run_gradlew_in_dir maia-standard-datasets "$ARGS"
+run_gradlew_in_dir maia-standard-learner-nodes "$ARGS"
+run_gradlew_in_dir maia-standard-learners "$ARGS"
+run_gradlew_in_dir maia-standard-nodes "$ARGS"
+run_gradlew_in_dir maia-standard-types "$ARGS"
+run_gradlew_in_dir maia-topology "$ARGS"
+run_gradlew_in_dir maia-topology-json "$ARGS"
+run_gradlew_in_dir maia-util "$ARGS"
