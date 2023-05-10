@@ -22,6 +22,7 @@ package maia.main
 import kotlinx.benchmark.Blackhole
 import kotlinx.benchmark.Mode
 import kotlinx.benchmark.Scope
+import kotlinx.coroutines.runBlocking
 import moa.classifiers.AbstractClassifier
 import moa.classifiers.trees.HoeffdingTree
 import moa.core.Utils
@@ -208,19 +209,21 @@ open class EvalPreqBenchmark {
 
         var instancesProcessed : Long = 0
 
-        for (row in stream.rowIterator()) {
-            if (instancesProcessed >= params.maxInstances) break
+        runBlocking {
+            for (row in stream.rowIterator()) {
+                if (instancesProcessed >= params.maxInstances) break
 
-            val prediction = learner.predict(row)
+                val prediction = learner.predict(row)
 
-            val actualClass = row.getValue(assertType<Nominal<*, *, *, *, *>>(row.headers[params.numAttrs].type).labelRepresentation)
-            val predictedClass = prediction.getValue(assertType<Nominal<*, *, *, *, *>>(prediction.headers[0].type).labelRepresentation)
+                val actualClass = row.getValue(assertType<Nominal<*, *, *, *, *>>(row.headers[params.numAttrs].type).labelRepresentation)
+                val predictedClass = prediction.getValue(assertType<Nominal<*, *, *, *, *>>(prediction.headers[0].type).labelRepresentation)
 
-            if (instancesProcessed % PRINT_EVERY == 0L)
-                printPrediction(predictedClass, actualClass)
+                if (instancesProcessed % PRINT_EVERY == 0L)
+                    printPrediction(predictedClass, actualClass)
 
-            learner.train(row.viewAsDataBatch())
-            instancesProcessed++
+                learner.train(row.viewAsDataBatch())
+                instancesProcessed++
+            }
         }
     }
 

@@ -19,6 +19,7 @@
  */
 package maia.main
 
+import kotlinx.coroutines.runBlocking
 import maia.ml.dataset.type.standard.Nominal
 import moa.classifiers.AbstractClassifier
 import moa.classifiers.trees.HoeffdingTree
@@ -61,29 +62,30 @@ class HoeffdingTreesIdenticalTest {
         val predictedClass2Repr = assertType<Nominal<*, *, *, *, *>>(learner2.predictOutputHeaders[0].type).labelRepresentation
 
         var instancesProcessed : Long = 0
+        runBlocking {
+            for (row in stream.rowIterator()) {
+                if (instancesProcessed >= maxInstances) break
 
-        for (row in stream.rowIterator()) {
-            if (instancesProcessed >= maxInstances) break
+                val prediction = learner.predict(row)
+                val prediction2 = learner2.predict(row)
 
-            val prediction = learner.predict(row)
-            val prediction2 = learner2.predict(row)
+                val actualClass = row.getValue(actualClassRepr)
+                val predictedClass = prediction.getValue(predictedClassRepr)
+                val predictedClass2 = prediction2.getValue(predictedClass2Repr)
 
-            val actualClass = row.getValue(actualClassRepr)
-            val predictedClass = prediction.getValue(predictedClassRepr)
-            val predictedClass2 = prediction2.getValue(predictedClass2Repr)
+                assertEquals(predictedClass2, predictedClass)
 
-            assertEquals(predictedClass2, predictedClass)
+                val trainBatch = row.viewAsDataBatch()
 
-            val trainBatch = row.viewAsDataBatch()
-            learner2.train(trainBatch)
-            learner.train(trainBatch)
+                learner2.train(trainBatch)
+                learner.train(trainBatch)
+                instancesProcessed++
 
-            instancesProcessed++
-
-            if (instancesProcessed % 10_000 == 0L) {
-                print("$instancesProcessed: ")
-                println("Predicted: $predictedClass; Actual: $actualClass [${predictedClass == actualClass}]")
-                assertStrings(learner, learner2)
+                if (instancesProcessed % 10_000 == 0L) {
+                    print("$instancesProcessed: ")
+                    println("Predicted: $predictedClass; Actual: $actualClass [${predictedClass == actualClass}]")
+                    assertStrings(learner, learner2)
+                }
             }
         }
     }

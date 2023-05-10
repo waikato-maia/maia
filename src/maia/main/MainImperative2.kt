@@ -19,6 +19,7 @@
  */
 package maia.main
 
+import kotlinx.coroutines.runBlocking
 import maia.configure.initialise
 import maia.ml.dataset.DataBatch
 import maia.ml.dataset.DataRow
@@ -63,7 +64,7 @@ fun main() {
 
     for (row in irisView.rowIterator()) {
         val trainView = row.viewAsDataBatch()
-        learner.train(trainView)
+        runBlocking { learner.train(trainView) }
         println(learner.predict(row).formatString())
     }
 

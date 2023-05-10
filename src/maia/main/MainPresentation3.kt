@@ -19,6 +19,7 @@
  */
 package maia.main
 
+import kotlinx.coroutines.runBlocking
 import maia.ml.dataset.DataBatch
 import maia.ml.dataset.arff.load
 import maia.ml.dataset.util.formatString
@@ -50,7 +51,7 @@ fun main() {
         val rowView = row.viewAsDataBatch()
 
         // Train on the row
-        learner.train(rowView)
+        runBlocking { learner.train(rowView) }
 
         // Get the prediction for the row
         val prediction = learner.predict(row)
