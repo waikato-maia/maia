@@ -4,7 +4,7 @@ echo "$1"
 
 function run_gradlew_in_dir() {
     cd "$1"
-    ./gradlew "${@:2}"
+    ./gradlew ${@:2}
     cd ..
 }
 
