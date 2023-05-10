@@ -31,10 +31,12 @@ import maia.ml.dataset.DataStream
 import maia.ml.dataset.moa.MOADataStream
 import maia.ml.dataset.moa.dataStreamToInstanceStream
 import maia.ml.dataset.moa.materalizeMOAClass
+import maia.ml.dataset.type.standard.Nominal
 import maia.ml.dataset.view.viewAsDataBatch
 import maia.ml.learner.Learner
 import maia.ml.learner.LearnerHarness
 import maia.ml.learner.moa.MOALearner
+import maia.util.assertType
 import org.openjdk.jmh.annotations.Benchmark
 import org.openjdk.jmh.annotations.BenchmarkMode
 import org.openjdk.jmh.annotations.Measurement
@@ -211,8 +213,8 @@ open class EvalPreqBenchmark {
 
             val prediction = learner.predict(row)
 
-            val actualClass = row.getValue(row.headers[params.numAttrs].type.canonicalRepresentation)
-            val predictedClass = prediction.getValue(prediction.headers[0].type.canonicalRepresentation)
+            val actualClass = row.getValue(assertType<Nominal<*, *, *, *, *>>(row.headers[params.numAttrs].type).labelRepresentation)
+            val predictedClass = prediction.getValue(assertType<Nominal<*, *, *, *, *>>(prediction.headers[0].type).labelRepresentation)
 
             if (instancesProcessed % PRINT_EVERY == 0L)
                 printPrediction(predictedClass, actualClass)

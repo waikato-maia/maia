@@ -19,10 +19,12 @@
  */
 package maia.main
 
+import maia.ml.dataset.type.standard.Nominal
 import moa.classifiers.AbstractClassifier
 import moa.classifiers.trees.HoeffdingTree
 import maia.ml.dataset.view.viewAsDataBatch
 import maia.ml.learner.moa.MOALearner
+import maia.util.assertType
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -54,9 +56,9 @@ class HoeffdingTreesIdenticalTest {
         learner.initialise(stream)
         learner2.initialise(stream)
 
-        val actualClassRepr = stream.headers[numAttr].type.canonicalRepresentation
-        val predictedClassRepr = learner.predictOutputHeaders[0].type.canonicalRepresentation
-        val predictedClass2Repr = learner2.predictOutputHeaders[0].type.canonicalRepresentation
+        val actualClassRepr = assertType<Nominal<*, *, *, *, *>>(stream.headers[numAttr].type).labelRepresentation
+        val predictedClassRepr = assertType<Nominal<*, *, *, *, *>>(learner.predictOutputHeaders[0].type).labelRepresentation
+        val predictedClass2Repr = assertType<Nominal<*, *, *, *, *>>(learner2.predictOutputHeaders[0].type).labelRepresentation
 
         var instancesProcessed : Long = 0
 
