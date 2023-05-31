@@ -22,6 +22,7 @@ fi
 run_gradlew_in_dir maia-arff "$ARGS"
 run_gradlew_in_dir maia-configure "$ARGS"
 run_gradlew_in_dir maia-dataset "$ARGS"
+run_gradlew_in_dir maia-evaluations "$ARGS"
 run_gradlew_in_dir maia-json-configuration "$ARGS"
 run_gradlew_in_dir maia-learner "$ARGS"
 run_gradlew_in_dir maia-learner-factory "$ARGS"
